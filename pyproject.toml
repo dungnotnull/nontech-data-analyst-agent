@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nontech-data-analyst-agent"
+version = "0.1.0"
+description = "AI business analyst for non-technical users — no SQL, no Python, no headaches."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "NonTech Data Analyst Agent Contributors"}
+]
+keywords = ["data-analysis", "business-intelligence", "nlp", "vietnamese", "pandas", "ai", "analytics"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Office/Business :: Financial",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.1.0",
+    "numpy>=1.24.0",
+    "openpyxl>=3.1.0",
+    "xlrd>=2.0.0",
+    "chardet>=7.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.27.0",
+    "python-multipart>=0.0.9",
+    "scikit-learn>=1.4.0",
+    "scipy>=1.12.0",
+    "prophet>=1.1.0",
+    "statsforecast>=1.7.0",
+    "statsmodels>=0.14.0",
+    "plotly>=5.18.0",
+    "matplotlib>=3.8.0",
+    "litellm>=1.30.0",
+    "anthropic>=0.25.0",
+    "openai>=1.12.0",
+    "chromadb>=0.5.0",
+    "sentence-transformers>=2.5.0",
+    "underthesea>=6.8.0",
+    "RestrictedPython>=7.0",
+    "apscheduler>=3.10.0",
+    "streamlit>=1.31.0",
+    "python-dateutil>=2.8.0",
+    "dateparser>=1.2.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.4.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.0.0",
+    "bandit>=1.7.0",
+    "safety>=2.0.0",
+]
+
+[project.scripts]
+nontech-analyst = "src.api.main:app"
+
+[project.urls]
+Homepage = "https://github.com/nontech-data-analyst-agent/nontech-data-analyst-agent"
+Documentation = "https://github.com/nontech-data-analyst-agent/nontech-data-analyst-agent#readme"
+Repository = "https://github.com/nontech-data-analyst-agent/nontech-data-analyst-agent"
+Issues = "https://github.com/nontech-data-analyst-agent/nontech-data-analyst-agent/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
